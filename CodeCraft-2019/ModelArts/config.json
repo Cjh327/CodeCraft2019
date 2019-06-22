@@ -1,0 +1,48 @@
+{
+	"model_type": "MXNet",
+	"metrics": {},
+	"model_algorithm": "car-gre",
+	"runtime": "python3.6",
+	"dependencies": [{
+		"installer": "pip",
+		"packages": [{
+				"restraint": "ATLEAST",
+				"package_version": "4.1.0",
+				"package_name": "opencv-python"
+			},
+			{
+				"restraint": "ATLEAST",
+				"package_version": "1.15.0",
+				"package_name": "numpy"
+			}
+		]
+	}],
+	"apis": [{
+		"protocol": "http",
+		"url": "/",
+		"request": {
+			"Content-type": "multipart/form-data",
+			"data": {
+				"type": "object",
+				"properties": {
+					"images": {
+						"type": "file"
+					}
+				}
+			}
+		},
+		"method": "post",
+		"response": {
+			"Content-type": "multipart/form-data",
+			"data": {
+				"required": ["car_id"],
+				"type": "object",
+				"properties": {
+					"car_id": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}]
+}
